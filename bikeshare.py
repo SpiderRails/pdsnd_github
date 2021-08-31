@@ -64,7 +64,7 @@ def get_filters():
 
         month = input_check(prompt, options)
     else:
-        month = 'all'
+        month = 'none'
 
     # Get user input for day of week if applicable
     if input_filter in ['day', 'both']:
@@ -73,7 +73,7 @@ def get_filters():
 
         day = input_check(prompt, options)
     else:
-        day = 'all'
+        day = 'none'
 
     # Print spacers and return user inputs.
     print('-'*40)
@@ -85,8 +85,8 @@ def load_data(city, month, day):
 
     Args:
         (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+        (str) month - name of the month to filter by, or "none" to apply no month filter
+        (str) day - name of the day of week to filter by, or "none" to apply no day filter
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
@@ -104,11 +104,11 @@ def load_data(city, month, day):
     df['hour'] = df['Start Time'].dt.hour
 
     # Filter by month to create  new dataframe (if applicable)
-    if month != 'all':
+    if month != 'none':
         df = df[df['month'] == month.title()]
 
     # Filter by day of week to create new dataframe (if applicable)
-    if day != 'all':
+    if day != 'none':
         df = df[df['day_of_week'] == day.title()]
 
     return df
