@@ -124,17 +124,17 @@ def time_stats(df):
     # Display the most common month, and count
     popular_month = df['month'].mode()[0]
     popular_month_count = df[df['month']==popular_month].count()[0]
-    print('Most Frequent Start Month:', popular_month, ', Count:', popular_month_count)
+    print("Most Frequent Start Month: {}, Count: {}".format(popular_month, popular_month_count))
 
     # Display the most common day of week, and count
     popular_day = df['day_of_week'].mode()[0]
     popular_day_count = df[df['day_of_week']==popular_day].count()[0]
-    print('Most Frequent Start Day of Week:', popular_day, ', Count:', popular_day_count)
+    print("Most Frequent Start Day of Week: {}, Count: {}".format(popular_day, popular_day_count))
 
     # Display the most common start hour, and count
     popular_hour = df['hour'].mode()[0]
     popular_hour_count = df[df['hour']==popular_hour].count()[0]
-    print('Most Frequent Start Hour:', popular_hour, ', Count:', popular_hour_count)
+    print("Most Frequent Start Hour: {}, Count: {}".format(popular_hour, popular_hour_count))
 
     # Display time to complete
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -151,17 +151,17 @@ def station_stats(df):
     # Display most commonly used start station, and count
     popular_startstation = df['Start Station'].mode()[0]
     popular_startstation_count = df[df['Start Station']==popular_startstation].count()[0]
-    print('Most Common Start Station:', popular_startstation, ', Count:', popular_startstation_count)
+    print("Most Common Start Station: {}, Count: {}".format(popular_startstation, popular_startstation_count))
 
     # Display most commonly used end station, and count
     popular_endstation = df['End Station'].mode()[0]
     popular_endstation_count = df[df['End Station']==popular_endstation].count()[0]
-    print('Most Common End Station:', popular_endstation, ', Count:', popular_endstation_count)
+    print("Most Common End Station: {}, Count: {}".format(popular_endstation, popular_endstation_count))
 
     # Display most frequent combination of start station and end station trip, and count
     popular_combination = df.groupby(['Start Station','End Station']).size().idxmax()
     popular_combination_count = df.groupby(['Start Station','End Station']).size().max()
-    print('Most Freqeuent Start/End Station trips:', popular_combination, ', Count:', popular_combination_count)
+    print("Most Freqeuent Start/End Station Trips: {}, Count: {}".format(popular_combination, popular_combination_count))
 
     # Display time to complete
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -197,13 +197,13 @@ def user_stats(df):
 
     # Display counts of user types
     user_types = df.groupby(['User Type']).size()
-    print('Subscribers:', user_types['Subscriber'], ', Customers:', user_types['Customer'])
+    print("Subscribers: {}, Customers: {}".format(user_types['Subscriber'], user_types['Customer']))
 
     # Error handler for the display of gender and age data
     try:
         # Display counts of gender
         gender = df.groupby(['Gender']).size()
-        print('Male:', gender['Male'], ', Female:', gender['Female'])
+        print("Male: {}, Female: {}".format(gender['Male'], gender['Female']))
 
         # Display earliest, most recent, and most common year of birth
         earliest_birth = int(df['Birth Year'].min())
